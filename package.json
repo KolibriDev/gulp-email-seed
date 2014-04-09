@@ -17,6 +17,7 @@
     "gulp": "^3.6.0",
     "gulp-bump": "^0.1.7",
     "gulp-clean": "^0.2.4",
+    "gulp-exec": "^1.0.4",
     "gulp-file-include": "^0.2.1",
     "gulp-header": "^1.0.2",
     "gulp-imagemin": "^0.2.0",
