@@ -13,6 +13,8 @@
   "contributors": [
     "Benedikt D Valdez <benedikt@form5.is>"
   ],
+  "remotePath": "",
+  "deployCmd": "scp -r <%= file.path %> <%= options.remotePath %> && echo 'Deployed <%= file.path %> <%= options.remotePath %>'",
   "devDependencies": {
     "gulp": "^3.6.0",
     "gulp-bump": "^0.1.7",
