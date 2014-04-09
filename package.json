@@ -1,0 +1,31 @@
+{
+  "name": "gulp-email-seed",
+  "description": "Seed for email templates",
+  "version": "0.0.0",
+  "author": {
+    "name": "Form5",
+    "email": "hello@form5.is",
+    "url": "http://www.form5.is"
+  },
+  "bugs": {
+    "url": "https://github.com/Form5/gulp-email-seed/issues"
+  },
+  "contributors": [
+    "Benedikt D Valdez <benedikt@form5.is>"
+  ],
+  "devDependencies": {
+    "gulp": "^3.6.0",
+    "gulp-load": "^0.1.1",
+    "gulp-load-plugins": "^0.5.0"
+  },
+  "homepage": "https://github.com/Form5/gulp-email-seed",
+  "license": "MIT",
+  "main": "gulpfile.js",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Form5/gulp-email-seed.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
