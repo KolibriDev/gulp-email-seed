@@ -1,15 +1,27 @@
+'use strict';
 
 module.exports = function(gulp) {
+  var spawn = require('child_process').spawn,
+      pkg  = require('../package.json'),
+      Q = require('q');
 
   gulp.task('deploy', function() {
-    var pkg = require('../package.json');
-    if (pkg.hasOwnProperty('remotePath') && pkg.remotePath !== '' && pkg.hasOwnProperty('deployCmd') && pkg.deployCmd !== '') {
+    var deferred = Q.defer();
 
-      return gulp.src(['./dist/*'],{read:false})
-              .pipe( gulp.plugin.exec(pkg.deployCmd,{remotePath: pkg.remotePath}) );
+    if (pkg.hasOwnProperty('deployCmd') && pkg.deployCmd !== '') {
+      var deployCmd = spawn(pkg.deployCmd);
+      deployCmd.stdout.on('data', function(data) {
+        process.stdout.write(data);
+      });
+
+      deployCmd.stdout.on('close', function(){
+        return deferred.resolve();
+      });
     } else {
-      console.log('deployCmd or remotePath is missing! Add deployCmd/remotePath to package.json to use this task!');
+      console.log('Deployment command is missing! Add deployCmd to package.json to use this task!');
+      return deferred.resolve();
     }
-  });
 
+    return deferred.promise;
+  });
 };
