@@ -1,4 +1,6 @@
 #!/bin/bash
-gulp build
-rsync -azv -O --chmod g+w dist/* vps01.kolibri.is:/www/stage.kolibri.is
-echo 'Deployed dist/* to stage.kolibri.is'
+branch_name=$(git symbolic-ref --short -q HEAD)
+
+gulp deployBuild
+rsync -azv -O --chmod g+w dist/* vps01.kolibri.is:/www/kolibri-emails/$branch_name
+echo "Deployed dist/* to emails.kolibri.is/$branch_name"

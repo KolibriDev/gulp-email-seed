@@ -5,7 +5,7 @@ module.exports = function(gulp) {
       pkg  = require('../package.json'),
       Q = require('q');
 
-  gulp.task('deploy', function() {
+  gulp.task('deploy', ['bump'], function() {
     var deferred = Q.defer();
 
     if (pkg.hasOwnProperty('deployCmd') && pkg.deployCmd !== '') {

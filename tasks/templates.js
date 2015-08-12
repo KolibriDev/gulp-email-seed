@@ -9,7 +9,18 @@ module.exports = function(gulp) {
 
   gulp.task('templates', function(){
     return gulp.src(['./src/**/*.html','!./src/includes/**/*.html'])
-            .pipe( gulp.plugin.inlineCss({'removeStyleTags': false}) )
+            .pipe( gulp.dest('./dist') );
+  });
+
+  gulp.task('deployTemplates', function(){
+    return gulp.src(['./src/**/*.html','!./src/includes/**/*.html'])
+            .pipe( gulp.plugin.inlineCss({
+              applyStyleTags: false,
+              removeStyleTags: false,
+              applyLinkTags: true,
+              removeLinkTags: true,
+              url: 'file://' + __dirname + '/../dist/'
+              }) )
             .pipe( gulp.plugin.header(banner, {pkg: require('../package.json')}) )
             .pipe( gulp.dest('./dist') );
   });
