@@ -9,7 +9,8 @@ module.exports = function(gulp) {
 
   gulp.task('templates', function(){
     return gulp.src(['./src/**/*.html','!./src/includes/**/*.html'])
-            .pipe( gulp.dest('./dist') );
+            .pipe( gulp.dest('./dist') )
+            .pipe( gulp.plugin.connect.reload() );
   });
 
   gulp.task('deployTemplates', function(){
