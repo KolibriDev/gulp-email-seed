@@ -1,9 +1,8 @@
+'use strict';
 
 module.exports = function(gulp) {
-
+  var del = require('del');
   gulp.task('clean', function() {
-    return gulp.src('./dist/*', {read: false})
-      .pipe( gulp.plugin.clean() );
+    return del(['./dist/']);
   });
-
 };
