@@ -25,7 +25,7 @@ test:
 	echo \"No test specified\" && exit 0
 
 build:
-	gulp deployBuild
+	gulp deployBuild --branch=${BRANCH_NAME}
 
 deploy:
 	rsync --delete-after --quiet -rlptuPO --chmod=g+w ./dist/* ${WEB_USER}@${TARGET_HOST}:${TARGET_DIR}
